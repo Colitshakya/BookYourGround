@@ -1,0 +1,520 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700;800&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', Arial, sans-serif;
+    background: #f4f7fb;
+    color: #0f172a;
+}
+.breadcrumb-wrap {
+    padding: 18px 0 10px;
+}
+
+.breadcrumb-container {
+    width: min(1240px, 92%);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-family: Arial, sans-serif;
+}
+
+.breadcrumb-link,
+.breadcrumb-current {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.breadcrumb-link {
+    color: #94a3b8;
+    transition: 0.25s ease;
+}
+
+.breadcrumb-link:hover {
+    color: #16a34a;
+}
+
+.breadcrumb-active-link {
+    color: #16a34a;
+}
+
+.breadcrumb-current {
+    color: #0f172a;
+}
+
+.breadcrumb-separator {
+    color: #94a3b8;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1;
+}
+.court-detail-page {
+    padding: 28px 0 56px;
+}
+
+.court-detail-container {
+    width: min(1240px, 92%);
+    margin: 0 auto;
+}
+
+.detail-message {
+    margin-bottom: 18px;
+    padding: 14px 16px;
+    border-radius: 14px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+.success-message {
+    background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+    color: #065f46;
+    border: 1px solid #a7f3d0;
+}
+
+.error-message {
+    background: linear-gradient(135deg, #fff1f2, #ffe4e6);
+    color: #be123c;
+    border: 1px solid #fecdd3;
+}
+
+.court-detail-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 28px;
+    align-items: start;
+}
+
+.court-detail-left,
+.court-detail-right {
+    display: grid;
+    gap: 20px;
+}
+
+.court-detail-image-card,
+.court-detail-info-card,
+.booking-card {
+    background: #ffffff;
+    border-radius: 24px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 10px 28px rgba(15, 23, 42, 0.07);
+    overflow: hidden;
+}
+
+.court-detail-image-card img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    display: block;
+}
+
+.court-detail-info-card {
+    padding: 24px;
+}
+
+.court-detail-tag {
+    display: inline-flex;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: rgba(0, 77, 77, 0.95);
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 14px;
+}
+
+.court-detail-info-card h1 {
+    margin: 0 0 10px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 34px;
+    font-weight: 800;
+    line-height: 1.12;
+    letter-spacing: -0.4px;
+}
+
+.court-detail-location {
+    margin: 0 0 12px;
+    color: #16a34a;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.court-detail-description {
+    margin: 0 0 20px;
+    color: #64748b;
+    font-size: 15px;
+    line-height: 1.75;
+}
+
+.court-detail-meta {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.court-detail-meta-box {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 16px;
+}
+
+.court-detail-meta-box span {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 12px;
+    color: #64748b;
+}
+
+.court-detail-meta-box strong {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 16px;
+    color: #0f172a;
+    font-weight: 700;
+}
+
+.booking-card {
+    padding: 24px;
+    position: sticky;
+    top: 110px;
+}
+
+.booking-card h2 {
+    margin: 0 0 8px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 1.15;
+}
+
+.booking-subtext {
+    margin: 0 0 20px;
+    color: #64748b;
+    font-size: 14px;
+    line-height: 1.65;
+}
+
+.booking-group {
+    margin-bottom: 24px;
+}
+
+.booking-group label {
+    display: block;
+    margin-bottom: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #111827;
+}
+
+.calendar-card {
+    background: #ffffff;
+    border: 1px solid #e7edf4;
+    border-radius: 24px;
+    padding: 18px;
+    box-shadow: 0 8px 22px rgba(15, 23, 42, 0.05);
+}
+
+.calendar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+}
+
+.calendar-header h3 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 700;
+    color: #111827;
+}
+
+.calendar-nav-btn {
+    width: 42px;
+    height: 42px;
+    border: none;
+    border-radius: 50%;
+    background: #f1f5f9;
+    color: #16a34a;
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.calendar-nav-btn:hover {
+    background: #dcfce7;
+    transform: translateY(-1px);
+}
+
+.calendar-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.calendar-weekdays span {
+    text-align: center;
+    font-size: 13px;
+    font-weight: 600;
+    color: #6b7280;
+    padding: 8px 0;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+}
+
+.calendar-date {
+    min-height: 48px;
+    border: none;
+    border-radius: 16px;
+    background: transparent;
+    font-size: 15px;
+    font-weight: 600;
+    color: #111827;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.calendar-date:hover:not(:disabled) {
+    background: #edf7ef;
+}
+
+.calendar-date.other-month {
+    color: #c4c4c4;
+    cursor: default;
+}
+
+.calendar-date.past-date {
+    color: #d1d5db;
+    cursor: not-allowed;
+}
+
+.calendar-date.today-date {
+    background: #edf5ef;
+    color: #111827;
+}
+
+.calendar-date.selected-date {
+    background: #36b24a;
+    color: #ffffff;
+    box-shadow: 0 10px 20px rgba(54, 178, 74, 0.18);
+}
+
+.selected-date-preview {
+    margin: 14px 0 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: #16a34a;
+}
+
+.slot-legend {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+    color: #374151;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.slot-legend span {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.legend-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.booked-dot {
+    background: #cfcfcf;
+}
+
+.available-dot {
+    background: #e9f4ec;
+}
+
+.selected-dot {
+    background: #36b24a;
+}
+
+.slot-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.slot-btn {
+    min-height: 84px;
+    border: none;
+    border-radius: 16px;
+    padding: 12px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    text-align: center;
+    transition: all 0.25s ease;
+    font-family: 'Inter', Arial, sans-serif;
+}
+
+.slot-btn span {
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.35;
+}
+
+.slot-btn small {
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.slot-btn.available {
+    background: #edf5ef;
+    color: #111827;
+    cursor: pointer;
+}
+
+.slot-btn.available:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
+}
+
+.slot-btn.booked {
+    background: #cfcfcf;
+    color: #ffffff;
+    cursor: not-allowed;
+    opacity: 1;
+}
+
+.slot-btn.selected {
+    background: #36b24a;
+    color: #ffffff;
+    box-shadow: 0 10px 20px rgba(54, 178, 74, 0.20);
+}
+
+.book-now-btn,
+.login-book-btn {
+    width: 100%;
+    min-height: 52px;
+    border: none;
+    border-radius: 16px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #ffffff;
+    background: linear-gradient(135deg, #0f8f49, #22c55e);
+    box-shadow: 0 10px 20px rgba(34, 197, 94, 0.16);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.book-now-btn:hover,
+.login-book-btn:hover {
+    transform: translateY(-2px);
+}
+
+.guest-note {
+    margin: 12px 0 0;
+    color: #64748b;
+    font-size: 13px;
+    line-height: 1.6;
+    text-align: center;
+}
+.calendar-date.past-date {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+@media (max-width: 1100px) {
+    .court-detail-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .booking-card {
+        position: static;
+    }
+}
+
+@media (max-width: 768px) {
+    .court-detail-page {
+        padding: 22px 0 46px;
+    }
+
+    .court-detail-info-card h1 {
+        font-size: 28px;
+    }
+
+    .court-detail-image-card img {
+        height: 280px;
+    }
+
+    .court-detail-meta {
+        grid-template-columns: 1fr;
+    }
+
+    .slot-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .calendar-date {
+        min-height: 42px;
+        font-size: 14px;
+    }
+
+    .calendar-header h3 {
+        font-size: 19px;
+    }
+}
+
+@media (max-width: 520px) {
+    .court-detail-container {
+        width: 94%;
+    }
+
+    .court-detail-info-card,
+    .booking-card {
+        padding: 18px;
+    }
+
+    .calendar-card {
+        padding: 14px;
+    }
+
+    .calendar-weekdays span {
+        font-size: 12px;
+    }
+
+    .slot-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .court-detail-tag {
+        font-size: 11px;
+        padding: 7px 12px;
+    }
+
+    .booking-card h2 {
+        font-size: 24px;
+    }
+}
