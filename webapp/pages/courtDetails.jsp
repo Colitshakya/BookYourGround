@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" isELIgnored="false" %>
+
+<!-- JSTL core tag library used for loops and conditions -->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
@@ -7,12 +9,16 @@
 <head>
 <meta charset="UTF-8">
 <title>${court.courtName} - Book Your Ground</title>
+
+<!-- Linking external CSS file for court details page styling -->
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/courtDetails.css">
 </head>
 <body>
 
+<!-- Including common website header -->
 <%@ include file="/includes/header.jsp" %>
 
+<!-- Breadcrumb navigation section -->
 <div class="breadcrumb-wrap">
     <div class="breadcrumb-container">
         <a href="${pageContext.request.contextPath}/home" class="breadcrumb-link">Home</a>
@@ -23,27 +29,35 @@
     </div>
 </div>
 
+<!-- Main court details page content -->
 <main class="court-detail-page">
     <div class="court-detail-container">
 
+        <!-- Booking success message section -->
         <div class="detail-message success-message"
              style="${empty bookingSuccessMessage ? 'display:none;' : 'display:block;'}">
             ${bookingSuccessMessage}
         </div>
 
+        <!-- Booking error message section -->
         <div class="detail-message error-message"
              style="${empty bookingErrorMessage ? 'display:none;' : 'display:block;'}">
             ${bookingErrorMessage}
         </div>
 
+        <!-- Court details and booking layout -->
         <div class="court-detail-grid">
 
+            <!-- Left side court information section -->
             <section class="court-detail-left">
+
+                <!-- Court image section -->
                 <div class="court-detail-image-card">
                     <img src="${empty court.imagePath ? pageContext.request.contextPath.concat('/photos/default-court.jpg') : pageContext.request.contextPath.concat('/photos/').concat(court.imagePath)}"
                          alt="${court.courtName}">
                 </div>
 
+                <!-- Court detail information card -->
                 <div class="court-detail-info-card">
                     <span class="court-detail-tag">${court.sportName}</span>
                     <h1>${court.courtName}</h1>
@@ -56,6 +70,7 @@
                         ${empty court.surfaceType ? 'Well-maintained court for matches and practice.' : court.surfaceType}
                     </p>
 
+                    <!-- Court price, capacity, opening hours, and sport details -->
                     <div class="court-detail-meta">
                         <div class="court-detail-meta-box">
                             <span>Price</span>
@@ -80,6 +95,7 @@
                 </div>
             </section>
 
+            <!-- Right side booking and slot selection section -->
             <aside class="court-detail-right">
                 <div class="booking-card">
                     <h2>Slot Selection</h2>
@@ -87,11 +103,13 @@
                         Pick a date and view live slot availability. You need to login before confirming a booking.
                     </p>
 
+                    <!-- Booking form submitted to BookingController -->
                     <form action="${pageContext.request.contextPath}/bookCourt" method="post" class="booking-form" id="bookingForm">
                         <input type="hidden" name="courtId" value="${courtId}">
                         <input type="hidden" name="bookingDate" id="bookingDate" value="${selectedDate}">
                         <input type="hidden" name="timeSlotId" id="timeSlotId" value="">
 
+                        <!-- Calendar date selection section -->
                         <div class="booking-group">
                             <label>Pick a date</label>
 
@@ -120,20 +138,24 @@
                             </p>
                         </div>
 
+                        <!-- Time slot selection section -->
                         <div class="booking-group">
                             <label>Pick a time</label>
 
+                            <!-- Slot availability legend -->
                             <div class="slot-legend">
                                 <span><i class="legend-dot booked-dot"></i>Booked</span>
                                 <span><i class="legend-dot available-dot"></i>Available</span>
                                 <span><i class="legend-dot selected-dot"></i>Selected</span>
                             </div>
 
+                            <!-- Slot loading error message -->
                             <div class="detail-message error-message"
                                  style="${empty slotErrorMessage ? 'display:none;' : 'display:block;'}">
                                 ${slotErrorMessage}
                             </div>
 
+                            <!-- Time slot buttons -->
                             <div class="slot-grid">
                                 <c:forEach var="slot" items="${slotList}">
                                     <button type="button"
@@ -146,18 +168,21 @@
                                 </c:forEach>
                             </div>
 
+                            <!-- Empty slot message -->
                             <p class="guest-note"
                                style="${empty slotList ? 'display:block;' : 'display:none;'}">
                                 No slots found for this date.
                             </p>
                         </div>
 
+                        <!-- Confirm booking button shown only for logged-in users -->
                         <button type="submit"
                                 class="book-now-btn"
                                 style="${isLoggedIn ? 'display:flex;' : 'display:none;'}">
                             Confirm Booking
                         </button>
 
+                        <!-- Login button shown for guest users -->
                         <a href="${pageContext.request.contextPath}/login"
                            class="login-book-btn"
                            id="loginToBookLink"
@@ -165,6 +190,7 @@
                             Login to Book
                         </a>
 
+                        <!-- Guest user note -->
                         <p class="guest-note"
                            style="${isLoggedIn ? 'display:none;' : 'display:block;'}">
                             You can browse available dates and time slots, but you need to login before confirming your booking.
@@ -177,9 +203,11 @@
     </div>
 </main>
 
+<!-- Including common website footer -->
 <%@ include file="/includes/footer.jsp" %>
 
 <script>
+    /* Getting calendar, booking form, and slot elements from the page */
     const calendarGrid = document.getElementById("calendarGrid");
     const calendarMonthYear = document.getElementById("calendarMonthYear");
     const prevMonthBtn = document.getElementById("prevMonthBtn");
@@ -193,12 +221,14 @@
 
     const slotButtons = document.querySelectorAll(".slot-btn.available");
 
+    /* Setting current date values for calendar validation */
     const today = new Date();
     const todayOnly = new Date(today.getFullYear(), today.getMonth(), today.getDate());
 
     // Past dates disabled
     const allowPastDates = false;
 
+    /* Setting selected date and calendar month */
     let selectedDate = selectedDateInput.value
         ? new Date(selectedDateInput.value + "T00:00:00")
         : new Date();
@@ -206,6 +236,7 @@
     let currentMonth = selectedDate.getMonth();
     let currentYear = selectedDate.getFullYear();
 
+    /* Formats date value for hidden input */
     function formatDateForInput(date) {
         const year = date.getFullYear();
         const month = String(date.getMonth() + 1).padStart(2, "0");
@@ -213,6 +244,7 @@
         return year + "-" + month + "-" + day;
     }
 
+    /* Formats date value for user-friendly display */
     function formatDateForDisplay(date) {
         return date.toLocaleDateString("en-US", {
             weekday: "long",
@@ -222,6 +254,7 @@
         });
     }
 
+    /* Updates login link with selected court, date, and time slot */
     function updateLoginLink() {
         if (!loginToBookLink) return;
 
@@ -251,6 +284,7 @@
         loginToBookLink.setAttribute("href", loginUrl);
     }
 
+    /* Renders calendar dates for selected month and year */
     function renderCalendar(month, year) {
         calendarGrid.innerHTML = "";
 
@@ -265,6 +299,7 @@
 
         calendarMonthYear.textContent = monthName;
 
+        /* Adds previous month disabled dates */
         for (let i = firstDay - 1; i >= 0; i--) {
             const prevDate = document.createElement("button");
             prevDate.type = "button";
@@ -274,6 +309,7 @@
             calendarGrid.appendChild(prevDate);
         }
 
+        /* Adds current month selectable dates */
         for (let day = 1; day <= daysInMonth; day++) {
             const dateButton = document.createElement("button");
             dateButton.type = "button";
@@ -320,6 +356,7 @@
             calendarGrid.appendChild(dateButton);
         }
 
+        /* Adds next month disabled dates */
         const totalCells = firstDay + daysInMonth;
         const nextMonthCells = 42 - totalCells;
 
@@ -333,6 +370,7 @@
         }
     }
 
+    /* Handles previous month calendar button */
     prevMonthBtn.addEventListener("click", function() {
         currentMonth--;
 
@@ -344,6 +382,7 @@
         renderCalendar(currentMonth, currentYear);
     });
 
+    /* Handles next month calendar button */
     nextMonthBtn.addEventListener("click", function() {
         currentMonth++;
 
@@ -355,6 +394,7 @@
         renderCalendar(currentMonth, currentYear);
     });
 
+    /* Handles available time slot selection */
     slotButtons.forEach(function(button) {
         button.addEventListener("click", function() {
             slotButtons.forEach(function(btn) {
@@ -367,6 +407,7 @@
         });
     });
 
+    /* Validates booking form before submission */
     bookingForm.addEventListener("submit", function(e) {
         const isLoggedIn = ${isLoggedIn ? 'true' : 'false'};
 
@@ -382,6 +423,7 @@
         }
     });
 
+    /* Initial calendar setup */
     renderCalendar(currentMonth, currentYear);
     updateLoginLink();
 
