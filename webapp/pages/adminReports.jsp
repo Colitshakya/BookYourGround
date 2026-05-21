@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" isELIgnored="false" %>
+
+<!-- JSTL core tag library used for loops and conditions -->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
@@ -7,25 +9,34 @@
 <head>
 <meta charset="UTF-8">
 <title>Reports - Book Your Ground</title>
+
+<!-- Linking external CSS file for admin reports page styling -->
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/adminReports.css">
 </head>
 <body>
 
+<!-- Main admin layout wrapper -->
 <div class="admin-layout">
 
+    <!-- Including common admin sidebar navigation -->
     <%@ include file="/includes/adminSidebar.jsp" %>
 
+    <!-- Main admin reports content -->
     <main class="admin-main">
+
+        <!-- Admin page title section -->
         <div class="admin-topbar">
             <p class="admin-page-tag">ADMIN PANEL</p>
             <h1>Reports & Analytics</h1>
         </div>
 
+        <!-- Error message section displayed only when errorMessage exists -->
         <div class="admin-message error-message"
              style="${empty errorMessage ? 'display:none;' : 'display:block;'}">
             ${errorMessage}
         </div>
 
+        <!-- Top report summary cards -->
         <section class="report-stats-grid">
             <div class="report-stat-card">
                 <h3>${report.totalUsers}</h3>
@@ -48,8 +59,10 @@
             </div>
         </section>
 
+        <!-- Reports and analytics grid -->
         <section class="report-grid">
 
+            <!-- Booking status distribution report -->
             <div class="report-card">
                 <div class="report-card-head">
                     <h2>Booking Status Distribution</h2>
@@ -57,6 +70,8 @@
                 </div>
 
                 <div class="progress-group">
+
+                    <!-- Confirmed booking progress bar -->
                     <div class="progress-item">
                         <div class="progress-title-row">
                             <span>Confirmed</span>
@@ -67,6 +82,7 @@
                         </div>
                     </div>
 
+                    <!-- Pending booking progress bar -->
                     <div class="progress-item">
                         <div class="progress-title-row">
                             <span>Pending</span>
@@ -77,6 +93,7 @@
                         </div>
                     </div>
 
+                    <!-- Cancelled booking progress bar -->
                     <div class="progress-item">
                         <div class="progress-title-row">
                             <span>Cancelled</span>
@@ -89,6 +106,7 @@
                 </div>
             </div>
 
+            <!-- Court availability report -->
             <div class="report-card">
                 <div class="report-card-head">
                     <h2>Court Availability</h2>
@@ -108,6 +126,7 @@
                 </div>
             </div>
 
+            <!-- Sport-wise booking analytics report -->
             <div class="report-card report-card-wide">
                 <div class="report-card-head">
                     <h2>Most Booked Sports</h2>
@@ -115,6 +134,8 @@
                 </div>
 
                 <div class="sport-chart-list">
+
+                    <!-- Looping through sport report list and displaying sport booking bars -->
                     <c:forEach var="sport" items="${report.sportReportList}">
                         <div class="sport-chart-item">
                             <div class="sport-chart-head">
@@ -127,12 +148,14 @@
                         </div>
                     </c:forEach>
 
+                    <!-- Empty message shown when sport analytics data is unavailable -->
                     <c:if test="${empty report.sportReportList}">
                         <p class="empty-report-text">No sport analytics available yet.</p>
                     </c:if>
                 </div>
             </div>
 
+            <!-- Quick summary report -->
             <div class="report-card">
                 <div class="report-card-head">
                     <h2>Quick Summary</h2>
