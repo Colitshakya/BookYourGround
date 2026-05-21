@@ -1,15 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" isELIgnored="false" %>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Home - Book Your Ground</title>
+
+<!-- Linking external CSS file for home page styling -->
 <link rel="stylesheet" type="text/css" href= "${pageContext.request.contextPath}/css/home.css">
 </head>
 <body>
+
+<!-- Including common website header -->
 <%@ include file="/includes/header.jsp" %>
 
+<!-- Hero section of the home page -->
 <section class="hero">
   <div class="container hero-grid">
     <div class="hero-text">
@@ -19,22 +25,22 @@
         Discover grounds, compare prices, check time slots, and confirm your booking in minutes.
       </p>
 
+      <!-- Main call-to-action button -->
       <div class="hero-actions">
         <a href="courts" class="btn btn-primary">Book Now</a>
-        
       </div>
-
-      
     </div>
 
-   <div class="hero-image-card">
-    <div class="stylish-hero-frame">
-        <img src="${pageContext.request.contextPath}/photos/aerial-view-of-pickleball-courts.webp" alt="Sports Court" class="stylish-hero-image">
+    <!-- Hero image section -->
+    <div class="hero-image-card">
+        <div class="stylish-hero-frame">
+            <img src="${pageContext.request.contextPath}/photos/aerial-view-of-pickleball-courts.webp" alt="Sports Court" class="stylish-hero-image">
+        </div>
     </div>
-</div>
   </div>
 </section>
 
+<!-- Popular sports section -->
 <section class="sports-section section-space">
   <div class="container">
     <div class="section-header">
@@ -42,6 +48,7 @@
       <h2>Choose your game</h2>
     </div>
 
+    <!-- Sport category cards -->
     <div class="card-grid four-grid">
       <a href="${pageContext.request.contextPath}/futsal">
       <div class="feature-card">
@@ -50,6 +57,7 @@
         <p>Indoor and outdoor futsal courts available.</p>
       </div>
       </a>
+
       <a href="${pageContext.request.contextPath}/basketball">
       <div class="feature-card">
         <div class="icon-circle"><img src="https://imgs.search.brave.com/mvDEqcB89w1_XSv0zrZwOf-UYWYT8OmS09X-wq2QZoY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTE0/OTg3MDU0OS9waG90/by9zcG9ydC1pbWFn/ZS5qcGc_cz02MTJ4/NjEyJnc9MCZrPTIw/JmM9OGF0SEh2TnV5/WjJzd29GcHpWWUR1/azAwXzJlZVRxYm41/bDNHN2JtQzVHST0" alt="basketball" class="sport-image"></div>
@@ -57,6 +65,7 @@
         <p>Indoor and outdoor basketball courts available</p>
       </div>
       </a>
+
       <a href="${pageContext.request.contextPath}/tennis">
       <div class="feature-card">
         <div class="icon-circle"><img src="https://imgs.search.brave.com/5EqcRfMAb9wqJf9LfDtv1pNDB97fu5lsjLZRrNeyM38/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9wbHVz/LnVuc3BsYXNoLmNv/bS9wcmVtaXVtX3Bo/b3RvLTE3MDc0MjMz/ODkwNTAtNmEzOGE3/OGE3NTk3P2ZtPWpw/ZyZxPTYwJnc9MzAw/MCZhdXRvPWZvcm1h/dCZmaXQ9Y3JvcCZp/eGxpYj1yYi00LjEu/MCZpeGlkPU0zd3hN/akEzZkRCOE1IeHpa/V0Z5WTJoOE1UZDhm/SFJsYm01cGN5VXlN/SEpoWTJ0bGRIeGxi/bnd3Zkh3d2ZIeDhN/QT09" alt="tennis" class="sport-image"></div>
@@ -64,6 +73,7 @@
         <p>Outdoor tennis court available.</p>
       </div>
       </a>
+
       <a href="${pageContext.request.contextPath}/pickleball">
       <div class="feature-card">
         <div class="icon-circle"><img src="https://imgs.search.brave.com/A7j8ZxNGzWw3bpHVW_oSRS3tlOZmpmHu3iL8M24l_-o/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTcz/ODA4NzA5OS9waG90/by9hZHVsdHMtcGxh/eWluZy1waWNrbGVi/YWxsLW9uLWEtcHVi/bGljLWNvdXJ0Lmpw/Zz9zPTYxMng2MTIm/dz0wJms9MjAmYz1r/UmZNRVBjSldDUlFz/MUxUN29ydlRMaWNT/VDhQbDdCNUdpc3F2/VUpZR0JnPQ" alt="Book Your Ground Logo" class="sport-image">
@@ -76,6 +86,7 @@
   </div>
 </section>
 
+<!-- Trending courts section -->
 <section class="section-space light-bg">
   <div class="container">
     <div class="section-header">
@@ -83,6 +94,7 @@
       <h2>Popular bookings</h2>
     </div>
 
+    <!-- Popular court cards -->
     <div class="card-grid three-grid">
     
        <div class="courts-card">
@@ -120,8 +132,6 @@
                     </a>
                 </div>
 				
-			
-		
       				<div class="courts-card">
       				<a href="${pageContext.request.contextPath}/courtDetails?court=turfpark-pickleball">
                     <div class="courts-image-wrap">
@@ -132,7 +142,6 @@
                     <div class="courts-body">
                         <div class="courts-card-top">
                             <h3>Turf Park Pickleball Court</h3>
-                            
                         </div>
 
                         <p class="courts-location">⚲ Jhamsikhel, Lalitpur</p>
@@ -158,7 +167,6 @@
                     </a>
                 </div>
                 
-
     		 <div class="courts-card">
      			<a href="${pageContext.request.contextPath}/courtDetails?court=picklepoint" >
                     <div class="courts-image-wrap">
@@ -193,14 +201,17 @@
                     </div>
                     </a>
                 </div>
+
+                <!-- Explore all courts button -->
                 <div class="hero-actions">
         			<a href="courts" class="btn btn-primary">Explore all ➜</a>
-        
-      				</div>
+      			</div>
 
     </div>
   </div>
 </section>
+
+<!-- Feature section explaining the booking system -->
 <section class="futsal-feature-section">
     <div class="futsal-feature-container">
         
@@ -217,6 +228,7 @@
                 your field is ready when you are.
             </p>
 
+            <!-- Feature benefit list -->
             <div class="futsal-feature-list">
                 <div class="futsal-feature-item">
                     <div class="futsal-feature-icon">✓</div>
@@ -235,6 +247,7 @@
             </div>
         </div>
 
+        <!-- Feature image section -->
         <div class="futsal-feature-right">
             <div class="futsal-feature-image-wrap">
                 <img src="${pageContext.request.contextPath}/photos/sports.jpg" alt="sports">
@@ -244,6 +257,8 @@
     </div>
 </section>
 
+<!-- Including common website footer -->
 <%@ include file="/includes/footer.jsp" %>
+
 </body>
 </html>
